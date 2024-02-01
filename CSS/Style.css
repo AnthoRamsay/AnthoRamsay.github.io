@@ -1,0 +1,26 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height:100%;
+    background-image: url(/Image/Tekel_avec_coeur.png);    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: 20vw;
+    border: solid black;
+    border-radius:100px 100px 100px 100px;                                                                                                                                                                                                              ;
+}
+p{
+    margin: 5px;
+    font-size: 2vw;
+    background-color: black;
+    color:white;
+    padding: 2vh;
+    border-radius: 20px;
+}
