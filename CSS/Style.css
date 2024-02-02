@@ -1,26 +1,38 @@
-html{
-    height: 100%;
-    width: 100%;
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
 }
-body{
-    height:100%;
-    background-image: url(/Image/Tekel_avec_coeur.png);    
-    text-align: center;
+html,body{
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: grey;
+
+}
+#cercle{
+    animation: fadeIn 4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 1200px;
+    width: 1200px;
+    border-radius: 600px;
 }
 img{
-    width: 20vw;
-    border: solid black;
-    border-radius:100px 100px 100px 100px;                                                                                                                                                                                                              ;
+    animation: fadeIn 6s;
+    width: 600px;
+    height: 750px;
+    border-radius:100px;
 }
 p{
-    margin: 5px;
-    font-size: 2vw;
-    background-color: black;
-    color:white;
-    padding: 2vh;
-    border-radius: 20px;
+    color: white;
+    font-size: 50px;
 }
