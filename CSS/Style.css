@@ -1,0 +1,38 @@
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+
+}
+#cercle{
+    animation: fadeIn 4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    height: 1200px;
+    width: 1200px;
+    border-radius: 600px;
+}
+img{
+    animation: fadeIn 6s;
+    width: 600px;
+    height: 750px;
+    border-radius:100px;
+}
+p{
+    color: white;
+    font-size: 50px;
+}
