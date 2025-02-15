@@ -3,95 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendez-vous</title>
+    <title>Événement - Compte à rebours</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f2f4;
-            color: #5d3f56;
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            padding: 50px;
         }
-
+        .container {
+            text-align: center;
+        }
         h1 {
-            color: #d7a6b8;
-            font-size: 36px;
-            font-weight: 600;
+            font-size: 2rem;
             margin-bottom: 20px;
         }
-
-        p {
-            font-size: 22px;
-            margin: 10px 0;
-        }
-
-        .address {
-            font-size: 24px;
-            font-weight: bold;
-            color: #d27e8b;
-        }
-
-        .date-time {
-            font-size: 20px;
-            color: #8c5b7c;
-            margin-bottom: 30px;
-        }
-
         .countdown {
-            font-size: 36px;
-            color: #e7b1d1;
+            font-size: 4rem;
             font-weight: bold;
-            background-color: #f9b0d2;
+            background-color: #333;
             padding: 20px;
             border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-
-        .countdown span {
-            font-size: 24px;
-            margin-right: 10px;
+        .location {
+            margin-top: 20px;
+            font-size: 1.2rem;
         }
     </style>
 </head>
 <body>
-    <h1>Rendez-vous amoureux</h1>
-    <p class="address">1050 Boulevard Jutas Est</p>
-    <p class="date-time">Le 16 février à 5h30</p>
-
-    <div id="countdown" class="countdown">
-        <span>00 jours 00 heures 00 minutes 00 secondes</span>
+    <div class="container">
+        <h1>Rejoins-moi le 16 février à 17h30 au 1050 Boulevard Jutras Est</h1>
+        <div id="countdown" class="countdown">Loading...</div>
+        <div class="location">1050 Boulevard Jutras Est</div>
     </div>
 
     <script>
-        // Date du rendez-vous (16 février à 5h30)
-        const rendezvousDate = new Date("February 16, 2025 05:30:00").getTime();
+        // Date de l'événement
+        const eventDate = new Date("February 16, 2025 17:30:00").getTime();
 
-        function updateCountdown() {
+        // Mettre à jour le compte à rebours toutes les secondes
+        const countdown = setInterval(function() {
+            // Obtenir la date et l'heure actuelles
             const now = new Date().getTime();
-            const timeLeft = rendezvousDate - now;
 
-            // Calculer le temps restant
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            // Calculer la différence entre la date de l'événement et maintenant
+            const distance = eventDate - now;
 
-            // Afficher le décompte
-            document.getElementById("countdown").innerHTML =
-                "<span>" + days + " jours</span>" + 
-                "<span>" + hours + " heures</span>" + 
-                "<span>" + minutes + " minutes</span>" + 
-                "<span>" + seconds + " secondes</span>";
+            // Calculer le temps restant en jours, heures, minutes et secondes
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Si le rendez-vous est passé
-            if (timeLeft < 0) {
-                document.getElementById("countdown").innerHTML = "Le rendez-vous est arrivé!";
+            // Afficher le compte à rebours
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // Si l'événement est arrivé, afficher un message
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "C'est le moment!";
             }
-        }
-
-        // Mettre à jour le décompte toutes les secondes
-        setInterval(updateCountdown, 1000);
+        }, 1000);
     </script>
 </body>
 </html>
