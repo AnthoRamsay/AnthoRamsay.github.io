@@ -3,78 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Événement - Compte à rebours</title>
+    <title>Mystère ?</title>
     <style>
         body {
-            background-color: #121212; /* Fond sombre */
-            color: #dcdcdc; /* Texte clair */
+            background-color: #101010; /* Fond sombre */
+            color: paleturquoise; /* datee clair */
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 85vh;
             text-align: center;
+            flex-direction: column;
+            
+            overflow: hidden;
         }
-        .container {
-            background-color: #1a1a1a; /* Fond sombre pour la section */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-            width: 300px;
+        .date {
+            color: salmon; 
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
         }
-        h1 {
+        .emplacement {
+            font-size: 2rem;
+            color: salmon;
+            margin-top: 10px;
+        }
+        .reservation{
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #b0b0b0; /* Couleur du texte de l'en-tête */
+            color: salmon;
+            margin-top: 60px;
         }
         .countdown {
-            font-size: 3rem;
+            font-size: 14rem;
             font-weight: bold;
-            color: #ff6f00; /* Couleur pour le compte à rebours */
-            background-color: #333333; /* Couleur de fond sombre pour le compte à rebours */
-            padding: 15px;
+            color: #f90000 ;
+            background-color: #222222;
+            padding: 40px;
             border-radius: 10px;
-            margin-top: 20px;
-        }
-        .location {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            color: #aaaaaa; /* Couleur du texte de la localisation */
+            display: inline-block; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Rejoins-moi le 16 février à 17h30</h1>
-        <div id="countdown" class="countdown"></div>
-        <div class="location">1050 Boulevard Jutras Est</div>
-    </div>
+   
+    <div class="date">16 février 17h30</div>
+    <div class="emplacement">1050 boulevard Jutras Est</div>
+    
+   
+    <div id="countdown" class="countdown">Chargement...</div>
 
+
+    <div class="reservation">Au nom de Anthony Ramsay</div>
     <script>
-        // Date de l'événement
+      
         const eventDate = new Date("February 16, 2025 17:30:00").getTime();
 
-        // Mettre à jour le compte à rebours toutes les secondes
+      
         const countdown = setInterval(function() {
-            // Obtenir la date et l'heure actuelles
+          
             const now = new Date().getTime();
 
-            // Calculer la différence entre la date de l'événement et maintenant
+           
             const distance = eventDate - now;
 
-            // Calculer le temps restant en heures, minutes et secondes
+           
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Afficher le compte à rebours
+          
             document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
 
-            // Si l'événement est arrivé, afficher un message
+          
             if (distance < 0) {
                 clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "C'est le moment!";
+                document.getElementById("countdown").innerHTML = "J'espère que tu es venus";
             }
         }, 1000);
     </script>
