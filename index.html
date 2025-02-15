@@ -6,45 +6,62 @@
     <title>Rendez-vous</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f2f4;
+            color: #5d3f56;
             text-align: center;
             padding: 50px;
         }
 
         h1 {
-            color: #4CAF50;
+            color: #d7a6b8;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 20px;
-            margin: 20px 0;
+            font-size: 22px;
+            margin: 10px 0;
         }
 
         .address {
             font-size: 24px;
             font-weight: bold;
+            color: #d27e8b;
         }
 
         .date-time {
-            font-size: 22px;
-            color: #555;
+            font-size: 20px;
+            color: #8c5b7c;
+            margin-bottom: 30px;
         }
 
         .countdown {
             font-size: 36px;
-            color: #e74c3c;
+            color: #e7b1d1;
             font-weight: bold;
+            background-color: #f9b0d2;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown span {
+            font-size: 24px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Rendez-vous</h1>
+    <h1>Rendez-vous amoureux</h1>
     <p class="address">1050 Boulevard Jutas Est</p>
     <p class="date-time">Le 16 février à 5h30</p>
 
-    <div id="countdown" class="countdown"></div>
+    <div id="countdown" class="countdown">
+        <span>00 jours 00 heures 00 minutes 00 secondes</span>
+    </div>
 
     <script>
         // Date du rendez-vous (16 février à 5h30)
@@ -62,7 +79,10 @@
 
             // Afficher le décompte
             document.getElementById("countdown").innerHTML =
-                days + " jours " + hours + " heures " + minutes + " minutes " + seconds + " secondes ";
+                "<span>" + days + " jours</span>" + 
+                "<span>" + hours + " heures</span>" + 
+                "<span>" + minutes + " minutes</span>" + 
+                "<span>" + seconds + " secondes</span>";
 
             // Si le rendez-vous est passé
             if (timeLeft < 0) {
