@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendez-vous</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .address {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .date-time {
+            font-size: 22px;
+            color: #555;
+        }
+
+        .countdown {
+            font-size: 36px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rendez-vous</h1>
+    <p class="address">1050 Boulevard Jutas Est</p>
+    <p class="date-time">Le 16 février à 5h30</p>
+
+    <div id="countdown" class="countdown"></div>
+
+    <script>
+        // Date du rendez-vous (16 février à 5h30)
+        const rendezvousDate = new Date("February 16, 2025 05:30:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = rendezvousDate - now;
+
+            // Calculer le temps restant
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Afficher le décompte
+            document.getElementById("countdown").innerHTML =
+                days + " jours " + hours + " heures " + minutes + " minutes " + seconds + " secondes ";
+
+            // Si le rendez-vous est passé
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "Le rendez-vous est arrivé!";
+            }
+        }
+
+        // Mettre à jour le décompte toutes les secondes
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
