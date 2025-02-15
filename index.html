@@ -6,8 +6,8 @@
     <title>Événement - Compte à rebours</title>
     <style>
         body {
-            background-color: #1e1e1e;
-            color: white;
+            background-color: #121212; /* Fond sombre */
+            color: #dcdcdc; /* Texte clair */
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
@@ -17,30 +17,37 @@
             text-align: center;
         }
         .container {
-            text-align: center;
+            background-color: #1a1a1a; /* Fond sombre pour la section */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            width: 300px;
         }
         h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
+            color: #b0b0b0; /* Couleur du texte de l'en-tête */
         }
         .countdown {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
-            background-color: #333;
-            padding: 20px;
+            color: #ff6f00; /* Couleur pour le compte à rebours */
+            background-color: #333333; /* Couleur de fond sombre pour le compte à rebours */
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
         }
         .location {
             margin-top: 20px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            color: #aaaaaa; /* Couleur du texte de la localisation */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Rejoins-moi le 16 février à 17h30 au 1050 Boulevard Jutras Est</h1>
-        <div id="countdown" class="countdown">Loading...</div>
+        <h1>Rejoins-moi le 16 février à 17h30</h1>
+        <div id="countdown" class="countdown"></div>
         <div class="location">1050 Boulevard Jutras Est</div>
     </div>
 
@@ -56,14 +63,13 @@
             // Calculer la différence entre la date de l'événement et maintenant
             const distance = eventDate - now;
 
-            // Calculer le temps restant en jours, heures, minutes et secondes
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            // Calculer le temps restant en heures, minutes et secondes
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Afficher le compte à rebours
-            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
 
             // Si l'événement est arrivé, afficher un message
             if (distance < 0) {
