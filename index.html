@@ -6,79 +6,110 @@
     <title>Mystère ?</title>
     <style>
         body {
-            background-color: #101010; /* Fond sombre */
-            color: paleturquoise; /* datee clair */
+            background-color: #101010;
+            color: paleturquoise;
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 85vh;
+            height: 100vh;
             text-align: center;
             flex-direction: column;
-            
             overflow: hidden;
         }
+
         .date {
             color: salmon; 
-            font-size: 4rem;
+            font-size: 5vw;
             font-weight: bold;
-            margin-bottom: 30px;
+            margin-bottom: 3vh;
         }
+
         .emplacement {
-            font-size: 2rem;
+            font-size: 2vw;
             color: salmon;
-            margin-top: 10px;
+            margin-top: 1vh;
         }
-        .reservation{
-            font-size: 1.5rem;
+
+        .reservation {
+            font-size: 2vw;
             color: salmon;
-            margin-top: 60px;
+            margin-top: 5vh;
         }
+
         .countdown {
             font-size: 14rem;
             font-weight: bold;
             color: #f90000 ;
             background-color: #222222;
-            padding: 40px;
+            padding: 4vw;
             border-radius: 10px;
             display: inline-block; 
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
-            margin-top: 60px;
+            margin-top: 5vh;
+        }
+
+        @media (max-width: 768px) {
+            .date {
+                font-size: 8vw;
+            }
+
+            .emplacement {
+                font-size: 4vw;
+            }
+
+            .reservation {
+                font-size: 3vw;
+            }
+
+            .countdown {
+                font-size: 8rem;
+                padding: 8vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .date {
+                font-size: 10vw;
+            }
+
+            .emplacement {
+                font-size: 5vw;
+            }
+
+            .reservation {
+                font-size: 4vw;
+            }
+
+            .countdown {
+                font-size: 6rem;
+                padding: 10vw;
+            }
         }
     </style>
 </head>
 <body>
-   
     <div class="date">16 février 17h30</div>
     <div class="emplacement">1050 boulevard Jutras Est</div>
     
-   
     <div id="countdown" class="countdown">Chargement...</div>
 
-
     <div class="reservation">Au nom de Anthony Ramsay</div>
+
     <script>
-      
         const eventDate = new Date("February 16, 2025 17:30:00").getTime();
 
-      
         const countdown = setInterval(function() {
-          
             const now = new Date().getTime();
-
-           
             const distance = eventDate - now;
 
-           
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-          
             document.getElementById("countdown").innerHTML = `${hours}h ${minutes}m ${seconds}s`;
 
-          
             if (distance < 0) {
                 clearInterval(countdown);
                 document.getElementById("countdown").innerHTML = "J'espère que tu es venus";
